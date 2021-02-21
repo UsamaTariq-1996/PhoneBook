@@ -1,0 +1,25 @@
+.container {
+  margin-top: 80px;
+}
+
+.card {
+  height: 340px;
+  width: 400px;
+  background-color: #808080;
+}
+
+.card-header h3 {
+  color: white;
+  text-align: center;
+  font-size: 30px !important;
+}
+
+.card-body{
+  margin-top: 25px;
+}
+
+.alert-messages {
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 10px;
+}

@@ -1,0 +1,98 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Phone Book Application</a>
+  <button
+    class="btn btn-outline-success my-2 my-sm-0"
+    type="submit"
+    (click)="logout()"
+  >
+    Logout
+  </button>
+</nav>
+
+<div class="container main-panel">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title text-center">
+        {{ updateState == true ? "Edit Contact" : "Add Contact" }}
+      </h5>
+      <div class="form-group">
+        <label for="contactName">Contact Name</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Contact Name"
+          [(ngModel)]="contactName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="contactName">Contact No</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Contact Number"
+          [(ngModel)]="contactNo"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container btn-toolbar">
+  <div class="card">
+    <div class="card-body">
+      <button
+        class="btn btn-primary"
+        [disabled]="!contactName || !contactNo"
+        type="button"
+        (click)="addContact()"
+      >
+        Add
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+        *ngIf="updateState"
+        (click)="updateContact()"
+      >
+        Update
+      </button>
+      <button class="btn btn-light" type="button" (click)="reset()">
+        Reset
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container contact-list">
+  <div *ngIf="contacts.length > 0">
+    <div *ngFor="let item of contacts">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span
+            ><label for="contactName">Contact Name: </label>
+            {{ item.contactName }} </span
+          ><br />
+          <span
+            ><label for="contactName">Contact Number: </label>
+            {{ item.contactNo }} </span
+          ><br />
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="editContact(item)"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="deleteContact(item)"
+          >
+            Delete
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
