@@ -9,6 +9,7 @@
   </button>
 </nav>
 
+
 <div class="container main-panel">
   <div class="card">
     <div class="card-body">
@@ -26,7 +27,7 @@
       </div>
 
       <div class="form-group">
-        <label for="contactName">Contact No</label>
+        <label for="contactNumber">Contact Number</label>
         <input
           type="text"
           class="form-control"
@@ -36,6 +37,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 <div class="container btn-toolbar">
@@ -43,21 +45,21 @@
     <div class="card-body">
       <button
         class="btn btn-primary"
-        [disabled]="!contactName || !contactNo"
+        [disabled]="!contactName || !contactNo || updateState"
         type="button"
         (click)="addContact()"
       >
         Add
       </button>
       <button
-        class="btn btn-primary"
+        class="btn btn-primary btn-pad"
         type="button"
         *ngIf="updateState"
         (click)="updateContact()"
       >
         Update
       </button>
-      <button class="btn btn-light" type="button" (click)="reset()">
+      <button class="btn btn-light btn-pad" type="button" (click)="reset()">
         Reset
       </button>
     </div>
@@ -86,7 +88,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-danger"
+            class="btn btn-danger btn-pad"
             (click)="deleteContact(item)"
           >
             Delete
@@ -96,3 +98,6 @@
     </div>
   </div>
 </div>
+
+
+

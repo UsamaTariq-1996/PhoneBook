@@ -10,13 +10,17 @@ export class LoginComponent implements OnInit {
   userName: string;
   password:string;
   invalidUser: boolean = false;
+  validUser = {
+    userName: "Usama",
+    password: "12345"
+  }
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   loginUser(){
-    if(this.userName === "Usama" && this.password === "123"){
+    if(this.userName === this.validUser.userName && this.password === this.validUser.password){
       console.log("Valid");
       this.router.navigateByUrl("/ContactList");
     }else{
