@@ -13,24 +13,13 @@ import { Router } from '@angular/router';
 export class ContactListComponent implements OnInit {
   contactName: string;
   contactMsg: string;
-  contactNo: number;
+  contactNo: string;
   contacts: any[] = [];
   updateState: boolean = false;
   updateId: string;
   deleteId: string;
   constructor(private router: Router) {
-    this.contacts = [
-      {
-        id: 1,
-        contactName: 'Ahmed',
-        contactNo: '+' + 923455678910,
-      },
-      {
-        id: 2,
-        contactName: 'Bilal',
-        contactNo: '+' + 9234043567891,
-      },
-    ];
+    this.contacts = []
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
   }
 
@@ -52,19 +41,16 @@ export class ContactListComponent implements OnInit {
       contactName: this.contactName,
       contactNo: this.contactNo,
     };
-    for(let i=0; i <contacts.length;i++){
-     if(contacts[i].id == newContact.id){
-      //  newContact.id = this.createId();
-      console.log("SAME IDS");
-
-     }
-    }
     contacts.push(newContact);
     localStorage.setItem('contacts', JSON.stringify(contacts));
+    this.contactName = "";
+    this.contactNo = null;
     this.getContactsAfterAction();
   }
   reset() {
-    (this.contactName = ''), (this.contactNo = null);
+    this.contactName = '';
+    this.contactNo = null;
+    this.updateState = false;
   }
   editContact(item) {
     console.log(item, 'clicked item');
@@ -85,6 +71,9 @@ export class ContactListComponent implements OnInit {
     console.log(contacts);
 
     localStorage.setItem('contacts', JSON.stringify(contacts));
+    this.contactName = "";
+    this.contactNo = null;
+    this.updateState = false;
     this.getContactsAfterAction();
   }
 
